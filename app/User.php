@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'first_name', 'last_name', 'department_id', 'gender', 'username'
     ];
 
     /**
@@ -46,5 +46,30 @@ class User extends Authenticatable
     public function subscriptions()
     {
         return $this->hasMany('App\Subscription');
+    }
+
+    public function slide_question_attempts()
+    {
+        return $this->hasMany('App\SlideQuestionAttempt');
+    }
+
+    public function quizzes()
+    {
+        return $this->hasMany('App\Quiz');
+    }
+
+    public function challenges_created()
+    {
+        return $this->hasMany('App\Challenge', 'challenger_id');
+    }
+
+    public function challenges_challenged()
+    {
+        return $this->hasMany('App\Challenge', 'opponent_id');
+    }
+
+    public function challenges()
+    {
+        return Challenge::where('challenger_id', $this->id)->orWhere('opponent_id', $this->id)->get();
     }
 }
