@@ -51,6 +51,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.10.1",
+        "@itope84/vue-paginator": "^0.8.1",
         "ckeditor": "^4.12.1",
         "vue-awesome-notifications": "^3.0.3",
         "vue-bootstrap-datetimepicker": "^5.0.1",

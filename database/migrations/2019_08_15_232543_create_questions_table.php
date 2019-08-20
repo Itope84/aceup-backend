@@ -17,8 +17,8 @@ class CreateQuestionsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('topic_id');
             $table->longText('body');
-            $table->json('options');
-            $table->string('difficulty')->default(QUESTION::MEDIUM_LEVEL);
+            $table->text('options');
+            $table->string('difficulty')->default(\App\Question::MEDIUM_LEVEL);
             $table->longText('explanation')->nullable();
             $table->timestamps();
         });

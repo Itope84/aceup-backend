@@ -7,6 +7,8 @@ import DefaultContainer from "../containers/DefaultContainer"
 // Views
 import Dashboard from "../views/Dashboard"
 
+import CreateCourse from "../pages/courses/Create"
+
 import Colors from "../views/theme/Colors"
 import Typography from "../views/theme/Typography"
 
@@ -75,6 +77,21 @@ export default new Router({
           path: 'dashboard',
           name: 'Dashboard',
           component: Dashboard
+        },
+        {
+          path: 'courses',
+          redirect: '/courses/create',
+          name: 'Courses',
+          component: {
+            render(c) {return c('router-view')}
+          },
+          children: [
+            {
+              path: 'create',
+              name: 'Create',
+              component: CreateCourse
+            }
+          ]
         },
         {
           path: 'theme',

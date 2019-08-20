@@ -14,6 +14,8 @@ if (token) {
     );
 }
 
+window.axios.defaults.baseUrl = "/api/super"
+
 
 try {
   window.Popper = require('popper.js').default;
@@ -46,6 +48,8 @@ import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css'
 import VueCkeditor from 'vue-ckeditor2'
 
 import Alert from "./views/components/Alert.vue"
+import EventHub from "./views/components/EventHub.vue"
+import VueButtonSpinner from "./views/components/VueButtonSpinner.vue"
 // todo
 // cssVars()
 
@@ -57,8 +61,8 @@ Vue.use(VueCkeditor)
 
 Vue.component('back-buttton', require('./views/components/BackButton.vue'))
 Vue.component('bootstrap-alert', Alert)
-Vue.component('event-hub', require('./views/components/EventHub.vue'))
-Vue.component('vue-button-spinner', require('./views/components/VueButtonSpinner.vue'))
+Vue.component('event-hub', EventHub)
+Vue.component('vue-button-spinner', VueButtonSpinner)
 Vue.component('v-select', vSelect)
 Vue.component('vue-ckeditor', VueCkeditor)
 

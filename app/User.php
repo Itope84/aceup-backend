@@ -11,13 +11,17 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
 
+    const SUPER_TYPE = 'super';
+    const EDITOR_TYPE = 'editor';
+    const STUDENT_TYPE = 'student';
+    
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'first_name', 'last_name', 'department_id', 'gender', 'username'
+        'email', 'password', 'first_name', 'last_name', 'department_id', 'gender', 'username', 'role'
     ];
 
     /**
@@ -68,8 +72,21 @@ class User extends Authenticatable
         return $this->hasMany('App\Challenge', 'opponent_id');
     }
 
+
     public function challenges()
     {
         return Challenge::where('challenger_id', $this->id)->orWhere('opponent_id', $this->id)->get();
+    }
+
+    // helpers
+    public function is_super()
+    {
+        return $this->role === self::SUPER_TYPE;
+    }
+
+    public function is_privileged()
+    {
+        // Privileged users can use the admin dashboard
+        return ($this->role === self::SUPER_TYPE || $this->role === self::EDITOR_TYPE);
     }
 }

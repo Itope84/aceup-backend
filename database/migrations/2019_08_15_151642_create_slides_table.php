@@ -19,7 +19,7 @@ class CreateSlidesTable extends Migration
             $table->integer('index')->unsigned();
             $table->longText('body');
             $table->boolean('is_question')->nullable()->default(false);
-            $table->json('options')->nullable();
+            $table->text('options')->nullable();
             $table->longText('explanation')->nullable();
             $table->timestamps();
         });
