@@ -7,7 +7,17 @@ import DefaultContainer from "../containers/DefaultContainer"
 // Views
 import Dashboard from "../views/Dashboard"
 
+import Courses from "../pages/courses/Index"
 import CreateCourse from "../pages/courses/Create"
+import EditCourse from "../pages/courses/Edit"
+
+import Topics from "../pages/topics/Index"
+import CreateTopic from "../pages/topics/Create"
+import EditTopic from "../pages/topics/Edit"
+import TopicSlides from "../pages/topics/Slides"
+
+import EditSlide from "../pages/slides/Edit"
+import CreateSlide from "../pages/slides/Create"
 
 import Colors from "../views/theme/Colors"
 import Typography from "../views/theme/Typography"
@@ -80,19 +90,94 @@ export default new Router({
         },
         {
           path: 'courses',
-          redirect: '/courses/create',
-          name: 'Courses',
+          redirect: '/courses/',
+          name: 'courses',
           component: {
             render(c) {return c('router-view')}
           },
           children: [
             {
+              path: '/',
+              name: 'All Courses',
+              component: Courses
+            },
+            {
               path: 'create',
-              name: 'Create',
+              name: 'create',
               component: CreateCourse
+            },
+            {
+              path: ':id/edit',
+              name: 'edit',
+              component: EditCourse
             }
           ]
         },
+
+        {
+          path: 'topics',
+          redirect: '/topics/',
+          name: 'topics',
+          component: {
+            render(c) {return c('router-view')}
+          },
+          children: [
+            {
+              path: '/',
+              name: 'All Topics',
+              component: Topics
+            },
+            {
+              path: 'create',
+              name: 'New Topic',
+              component: CreateTopic
+            },
+            {
+              path: ':id/edit',
+              name: 'Edit Topic',
+              component: EditTopic
+            },
+            {
+              path: ':topicId/slides',
+              name: 'Topic Slides',
+              component: TopicSlides
+            },
+            {
+              path: ':topicId/slides/create',
+              name: 'New Slide',
+              component: CreateSlide
+            },
+          ]
+        },
+
+        {
+          path: 'slides',
+          redirect: '/topics/',
+          name: 'Slides',
+          component: {
+            render(c) {return c('router-view')}
+          },
+          children: [
+            // {
+            //   path: '/',
+            //   name: 'All Topics',
+            //   component: Topics
+            // },
+            
+            {
+              path: ':id/edit',
+              name: 'Edit Slide',
+              component: EditSlide
+            },
+            // {
+            //   path: ':id/edit',
+            //   name: 'Edit Slide',
+            //   component: EditSlide
+            // }
+          ]
+        },
+
+
         {
           path: 'theme',
           redirect: '/theme/colors',

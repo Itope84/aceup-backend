@@ -14,7 +14,7 @@ if (token) {
     );
 }
 
-window.axios.defaults.baseUrl = "/api/super"
+window.axios.defaults.baseURL = "/api/super"
 
 
 try {
@@ -41,6 +41,7 @@ import store from './store'
 Vue.prototype.$eventHub = new Vue()
 
 import VueAWN from 'vue-awesome-notifications'
+import 'vue-awesome-notifications/dist/styles/style.css'
 import vSelect from 'vue-select'
 import datePicker from 'vue-bootstrap-datetimepicker'
 import VueSweetalert2 from 'vue-sweetalert2'

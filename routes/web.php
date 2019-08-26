@@ -25,6 +25,24 @@ Route::get('/dashboard/{any?}', function () {
 
 Route::group(['middleware' => ['is_privileged'], 'namespace' => 'Api\Super', 'prefix' => '/api/super'], function () {
     Route::post('/upload-image', 'GeneralController@uploadImage');
+    
+    // courses
+    Route::get('/courses', 'CourseController@index');
+    Route::post('/courses', 'CourseController@store');
+    Route::get('/courses/{course}', 'CourseController@show');
+    Route::put('/courses/{course}', 'CourseController@update');
+
+    // Topics
+    Route::get('/topics', 'TopicController@index');
+    Route::post('/topics', 'TopicController@store');
+    Route::get('/topics/{topic}', 'TopicController@show');
+    Route::put('/topics/{topic}', 'TopicController@update');
+
+    // Slides
+    Route::get('/slides', 'SlideController@index');
+    Route::post('/slides', 'SlideController@store');
+    Route::get('/slides/{slide}', 'SlideController@show');
+    Route::put('/slides/{slide}', 'SlideController@update');
 });
 
 Route::get('/mail/test', function () {

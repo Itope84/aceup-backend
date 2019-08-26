@@ -45,14 +45,8 @@ const actions = {
                 }
             }
 
-            if (_.isEmpty(state.item.depends_on)) {
-                params.set("depends_on_id", "");
-            } else {
-                params.set("depends_on_id", state.item.depends_on.id);
-            }
-
             axios
-                .post("/api/v1/modules", params)
+                .post("/courses", params)
                 .then(response => {
                     commit("resetState");
                     resolve();
@@ -100,14 +94,8 @@ const actions = {
                 }
             }
 
-            if (_.isEmpty(state.item.depends_on)) {
-                params.set("depends_on_id", "");
-            } else {
-                params.set("depends_on_id", state.item.depends_on.id);
-            }
-
             axios
-                .post("/api/v1/modules/" + state.item.id, params)
+                .post(`courses/${state.item.id}`, params)
                 .then(response => {
                     commit("setItem", response.data.data);
                     resolve();
@@ -129,12 +117,13 @@ const actions = {
                 });
         });
     },
+    resetState({commit}) {
+        commit("resetState")
+    },
     fetchData({ commit, dispatch }, id) {
-        axios.get("/api/v1/modules/" + id).then(response => {
+        axios.get("courses/" + id).then(response => {
             commit("setItem", response.data.data);
         });
-
-        dispatch("fetchModulesAll");
     },
 
     setCourse({ commit }, course) {
@@ -154,7 +143,7 @@ const actions = {
         commit("setUploading", true)
         
         const file = new FormData();
-        file.append("logo", image);
+        file.append("image", image);
         axios
             .post("upload-image", file)
             .then(response => {
@@ -210,7 +199,7 @@ const mutations = {
     },
 
     setColor_scheme(state, color) {
-        state.item.color = color;
+        state.item.color_scheme = color;
     }
 };
 

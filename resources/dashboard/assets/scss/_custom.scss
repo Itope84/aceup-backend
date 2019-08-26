@@ -1,1 +1,11 @@
 // Here you can add other styles
+@import "vue-select/src/scss/vue-select.scss";
+
+// style.scss 
+@import '~sweetalert2/src/variables';
+ 
+@import '~sweetalert2/src/sweetalert2';
+
+.table td {
+    max-width: 200px;
+}

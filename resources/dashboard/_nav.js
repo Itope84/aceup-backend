@@ -11,7 +11,7 @@ export default {
     },
     {
       title: true,
-      name: 'Theme',
+      name: 'Content',
       class: '',
       wrapper: {
         element: '',
@@ -19,9 +19,14 @@ export default {
       }
     },
     {
-      name: 'Colors',
-      url: '/theme/colors',
-      icon: 'icon-drop'
+      name: 'Courses',
+      url: '/courses',
+      icon: 'fas fa-book'
+    },
+    {
+      name: 'Topics',
+      url: '/topics',
+      icon: 'fas fa-book'
     },
     {
       name: 'Typography',
