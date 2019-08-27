@@ -51,7 +51,11 @@ Route::group(['middleware' => ['is_privileged'], 'namespace' => 'Api\Super', 'pr
     Route::put('/questions/{question}', 'QuestionController@update');
 
     // Users
-    Route::get('/users', 'UserController@index');
+    Route::middleware(['is_super'])->group(function () {
+        Route::get('/users', 'UserController@index');
+        Route::post('/users', 'UserController@store');
+    });
+
 });
 
 Route::get('/mail/test', function () {

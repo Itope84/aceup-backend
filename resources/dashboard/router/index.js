@@ -8,6 +8,7 @@ import DefaultContainer from "../containers/DefaultContainer"
 import Dashboard from "../views/Dashboard"
 
 import Users from "../pages/users/Users"
+import CreateUser from "../pages/users/Create"
 
 import Courses from "../pages/courses/Index"
 import CreateCourse from "../pages/courses/Create"
@@ -217,7 +218,12 @@ export default new Router({
             render(c) {return c('router-view')}
           },
           children: [
-            
+            {
+              path: 'create',
+              name: 'Create User',
+              component: CreateUser
+            },
+
             {
               path: ':type',
               name: 'Users',
@@ -226,7 +232,7 @@ export default new Router({
 
 
             {
-              path: ':id/profile',
+              path: ':id/edit',
               meta: { label: 'User Details'},
               name: 'User',
               component: User,
