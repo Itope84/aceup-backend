@@ -18,7 +18,7 @@ class AdminTableSeeder extends Seeder
             'password' => bcrypt('s@nt1@g0251317'),
             'first_name' => "Temitope",
             'last_name' => "Ilesanmi",
-            'role' => 'superadmin'
+            'role' => 'super'
         ]);
     }
 }
