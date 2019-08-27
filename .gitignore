@@ -1,9 +1,9 @@
 /node_modules
 /public/hot
 /public/storage
+/public/ckeditor
 /storage/*.key
 /vendor
-/public/ckeditor
 .env
 .env.backup
 .phpunit.result.cache
