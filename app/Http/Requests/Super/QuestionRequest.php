@@ -28,15 +28,8 @@ class QuestionRequest extends FormRequest
             'topic_id' => ['required', 'exists:topics,id'],
             'body' => ['required'],
             'difficulty' => ['required', 'in:easy,medium,difficult'],
-            // 'options.*.key' => ['required'],
-            // 'options.*.body' => ['required'],
-            // 'options.*.is_answer' => ['boolean']
+            'options' => ['required', 'array', 'min:2', new OptionFormat()]
         ];
-
-        if (isset(request()->is_question) && request()->is_question) {
-            $optionRules = ['required', 'array', new OptionFormat()];
-            $rules['options'] = $optionRules;
-        }
 
         return $rules;
     }

@@ -7,6 +7,8 @@ import TopicIndex from './modules/topics'
 import TopicSingle from './modules/topics/single'
 import SlideIndex from './modules/slides'
 import SlideSingle from './modules/slides/single'
+import QuestionIndex from './modules/questions'
+import QuestionSingle from './modules/questions/single'
 
 Vue.use(Vuex)
 
@@ -19,7 +21,9 @@ export default new Vuex.Store({
         TopicIndex,
         TopicSingle,
         SlideIndex,
-        SlideSingle
+        SlideSingle,
+        QuestionIndex,
+        QuestionSingle,
     },
     strict: debug,
 })

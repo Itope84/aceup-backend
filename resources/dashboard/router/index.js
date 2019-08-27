@@ -7,6 +7,8 @@ import DefaultContainer from "../containers/DefaultContainer"
 // Views
 import Dashboard from "../views/Dashboard"
 
+import Users from "../pages/users/Users"
+
 import Courses from "../pages/courses/Index"
 import CreateCourse from "../pages/courses/Create"
 import EditCourse from "../pages/courses/Edit"
@@ -15,9 +17,13 @@ import Topics from "../pages/topics/Index"
 import CreateTopic from "../pages/topics/Create"
 import EditTopic from "../pages/topics/Edit"
 import TopicSlides from "../pages/topics/Slides"
+import TopicQuestions from "../pages/topics/Questions"
 
 import EditSlide from "../pages/slides/Edit"
 import CreateSlide from "../pages/slides/Create"
+
+import EditQuestion from "../pages/questions/Edit"
+import CreateQuestion from "../pages/questions/Create"
 
 // import Colors from "../views/theme/Colors"
 // import Typography from "../views/theme/Typography"
@@ -67,7 +73,7 @@ import CreateSlide from "../pages/slides/Create"
 // import Register from "../views/pages/Register"
 
 // Users
-import Users from "../views/users/Users"
+// import Users from "../views/users/Users"
 import User from "../views/users/User"
 
 Vue.use(Router)
@@ -147,6 +153,16 @@ export default new Router({
               name: 'New Slide',
               component: CreateSlide
             },
+            {
+              path: ':topicId/questions',
+              name: 'Topic Questions',
+              component: TopicQuestions
+            },
+            {
+              path: ':topicId/questions/create',
+              name: 'New Question',
+              component: CreateQuestion
+            },
           ]
         },
 
@@ -169,11 +185,52 @@ export default new Router({
               name: 'Edit Slide',
               component: EditSlide
             },
+          ]
+        },
+        {
+          path: 'questions',
+          redirect: '/topics/',
+          name: 'Questions',
+          component: {
+            render(c) {return c('router-view')}
+          },
+          children: [
             // {
-            //   path: ':id/edit',
-            //   name: 'Edit Slide',
-            //   component: EditSlide
-            // }
+            //   path: '/',
+            //   name: 'All Topics',
+            //   component: Topics
+            // },
+            
+            {
+              path: ':id/edit',
+              name: 'Edit Question',
+              component: EditQuestion
+            },
+          ]
+        },
+
+        {
+          path: 'users',
+          redirect: '/users/editor',
+          name: 'Users',
+          component: {
+            render(c) {return c('router-view')}
+          },
+          children: [
+            
+            {
+              path: ':type',
+              name: 'Users',
+              component: Users
+            },
+
+
+            {
+              path: ':id/profile',
+              meta: { label: 'User Details'},
+              name: 'User',
+              component: User,
+            },
           ]
         },
 
@@ -208,25 +265,7 @@ export default new Router({
         //   name: 'Widgets',
         //   component: Widgets
         // },
-        // {
-        //   path: 'users',
-        //   meta: { label: 'Users'},
-        //   component: {
-        //     render (c) { return c('router-view') }
-        //   },
-        //   children: [
-        //     {
-        //       path: '',
-        //       component: Users,
-        //     },
-        //     {
-        //       path: ':id',
-        //       meta: { label: 'User Details'},
-        //       name: 'User',
-        //       component: User,
-        //     },
-        //   ]
-        // },
+        // 
         // {
         //   path: 'base',
         //   redirect: '/base/cards',

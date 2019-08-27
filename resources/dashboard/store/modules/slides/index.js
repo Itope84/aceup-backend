@@ -4,7 +4,7 @@ function initialState() {
         // query: {},
         meta: {},
         loading: false,
-        // courses: []
+        topic: null
     };
 }
 
@@ -19,12 +19,17 @@ const getters = {
         // return rows.slice(state.query.offset, state.query.offset + state.query.limit)
         return rows;
     },
-    // courses: state => state.courses,
+    topic: state => state.topic,
     meta: state => state.meta,
     loading: state => state.loading
 };
 
 const actions = {
+    fetchTopic({ commit }, id) {
+        axios.get("topics/" + id).then(response => {
+            commit("setTopic", response.data.data);
+        });
+    },
     fetchSlides({ commit, state }, {page, topic} = {}) {
         commit("setLoading", true);
 
@@ -78,6 +83,9 @@ const actions = {
 const mutations = {
     setAll(state, items) {
         state.all = items;
+    },
+    setTopic(state, data) {
+        state.topic = data;
     },
     setMeta(state, meta) {
         state.meta = meta;

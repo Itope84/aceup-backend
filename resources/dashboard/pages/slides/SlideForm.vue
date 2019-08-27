@@ -88,7 +88,7 @@
                   <c-switch
                     class="mx-1"
                     color="primary"
-                    name="is_question"
+                    name="is_answer"
                     :value="1"
                     label
                     v-bind="labelTxt"

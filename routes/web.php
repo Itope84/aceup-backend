@@ -43,6 +43,15 @@ Route::group(['middleware' => ['is_privileged'], 'namespace' => 'Api\Super', 'pr
     Route::post('/slides', 'SlideController@store');
     Route::get('/slides/{slide}', 'SlideController@show');
     Route::put('/slides/{slide}', 'SlideController@update');
+
+    // Questions
+    Route::get('/questions', 'QuestionController@index');
+    Route::post('/questions', 'QuestionController@store');
+    Route::get('/questions/{question}', 'QuestionController@show');
+    Route::put('/questions/{question}', 'QuestionController@update');
+
+    // Users
+    Route::get('/users', 'UserController@index');
 });
 
 Route::get('/mail/test', function () {
