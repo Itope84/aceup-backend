@@ -4,6 +4,7 @@ namespace App\Http\Requests\Super;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\UniqueIndex;
+use App\Rules\OptionFormat;
 
 class SlideRequest extends FormRequest
 {
@@ -29,9 +30,6 @@ class SlideRequest extends FormRequest
             'index' => ['required', 'integer', 'min:1'],
             'body' => ['required'],
             'is_question' => ['boolean'], 
-            'optios.*.key' => ['required'],
-            'options.*.body' => ['required'],
-            'options.*.is_answer' => ['boolean']
         ];
 
         if(!request()->id || \App\Slide::find(request()->id)->index != request()->index) {
@@ -39,7 +37,7 @@ class SlideRequest extends FormRequest
         }
 
         if(isset(request()->is_question) && request()->is_question) {
-            $optionRules = ['array', 'required'];
+            $optionRules = ['required', 'array', new OptionFormat()];
             $rules['options'] = $optionRules;
         }
 

@@ -9,3 +9,14 @@
 .table td {
     max-width: 200px;
 }
+
+.btn-purple {
+    color: #fff;
+    background-color: $purple;
+    border-color: $purple;
+
+    &:hover{
+        color: #fff;
+        background-color: darken($purple, 10)
+    }
+}

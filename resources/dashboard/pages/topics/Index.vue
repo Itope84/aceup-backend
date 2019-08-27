@@ -39,6 +39,11 @@
                 class="btn btn-sm btn-info"
               >Slides</router-link>
 
+              <router-link
+                :to="`/topics/${topic.id}/questions`"
+                class="btn btn-sm btn-purple"
+              >Questions</router-link>
+
               <a
                 href="#editProject"
                 class="btn btn-sm btn-danger disabled"
