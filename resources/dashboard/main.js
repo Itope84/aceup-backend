@@ -51,9 +51,9 @@ import VueCkeditor from 'vue-ckeditor2'
 import Alert from "./views/components/Alert.vue"
 import EventHub from "./views/components/EventHub.vue"
 import VueButtonSpinner from "./views/components/VueButtonSpinner.vue"
-// todo
-// cssVars()
-
+import Clipboard from 'v-clipboard'
+ 
+Vue.use(Clipboard)
 Vue.use(BootstrapVue)
 Vue.use(VueAWN, { position: 'top-right' })
 Vue.use(datePicker)
